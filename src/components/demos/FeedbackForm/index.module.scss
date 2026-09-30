@@ -1,0 +1,163 @@
+.surface {
+  background: #fff;
+  border: 1px solid #e4e9ec;
+  border-radius: 7px;
+  box-shadow: 0 2px 11px rgb(29 49 57 / 2.5%);
+}
+
+.field {
+  textarea {
+    border: 1px solid #dbe3e7;
+    border-radius: 5px;
+    padding: 0 12px;
+    color: #2a3c44;
+    background: #fff;
+    font-size: 12px;
+    min-width: 0;
+    width: 100%;
+    padding-top: 10px;
+    resize: vertical;
+    min-height: 76px;
+  }
+
+  select {
+    width: 100%;
+    height: 39px;
+    border: 1px solid #dbe3e7;
+    border-radius: 5px;
+    padding: 0 12px;
+    color: #2a3c44;
+    background: #fff;
+    font-size: 12px;
+  }
+
+  label {
+    display: block;
+    color: #425760;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+
+  input {
+    border: 1px solid #dbe3e7;
+    border-radius: 5px;
+    padding: 0 12px;
+    color: #2a3c44;
+    background: #fff;
+    font-size: 12px;
+    min-width: 0;
+    width: 100%;
+    height: 39px;
+  }
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+
+  @media (width <= 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field-error {
+  display: block;
+  margin-top: 6px;
+  color: #ad4e48;
+  font-size: 10px;
+}
+
+.rating {
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  legend {
+    color: #425760;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+}
+
+.rating-row {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 9px;
+    border: 1px solid #dce5e7;
+    border-radius: 5px;
+    color: #536b72;
+    font-size: 11px;
+  }
+
+  input {
+    accent-color: #0d9f91;
+  }
+}
+
+.counter {
+  display: flex;
+  justify-content: space-between;
+  min-height: 16px;
+  margin-top: 4px;
+  color: #91a0a8;
+  font-size: 10px;
+
+  small {
+    color: #ad4e48;
+    font-size: 10px;
+  }
+}
+
+.feedback-surface {
+  padding: 22px;
+  max-width: 740px;
+}
+
+.feedback-form {
+  display: grid;
+  gap: 15px;
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  span {
+    font-size: 10px;
+    color: #91a0a8;
+  }
+
+  b {
+    color: #168f80;
+  }
+}
+
+.form-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  font-size: 11px;
+
+  &.success {
+    color: #146e59;
+    background: #e7f7ed;
+  }
+
+  &.error {
+    color: #a34444;
+    background: #fff0ee;
+  }
+}

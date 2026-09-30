@@ -1,0 +1,24 @@
+.primary-button {
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 5px;
+  padding: 0 15px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+  border: 1px solid var(--brand-color);
+  background: var(--brand-color);
+  color: white;
+
+  &:hover {
+    background: var(--brand-hover-color);
+    border-color: var(--brand-hover-color);
+  }
+}

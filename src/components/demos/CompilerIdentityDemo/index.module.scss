@@ -1,0 +1,156 @@
+.surface {
+  border: 1px solid #e1e9ea;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.toolbar {
+  min-height: 62px;
+  padding: 12px 18px;
+  border-bottom: 1px solid #e8eeee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  > span {
+    color: #6f8189;
+    font-size: 12px;
+
+    strong {
+      color: #203941;
+      margin-left: 8px;
+      font-size: 18px;
+    }
+  }
+
+  button {
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid #c9ded9;
+    border-radius: 5px;
+    background: #eff8f5;
+    color: #176e62;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    &:hover {
+      background: #e1f2ec;
+    }
+  }
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @media (width <= 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.case {
+  min-width: 0;
+  padding: 18px;
+  border-top: 3px solid #aebcc1;
+
+  + .case {
+    border-left: 1px solid #e8eeee;
+  }
+
+  > p {
+    min-height: 36px;
+    margin: 10px 0 16px;
+    color: #7a8c93;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  @media (width <= 900px) {
+    + .case {
+      border-left: 0;
+      border-top-width: 1px;
+      border-top-color: #e8eeee;
+    }
+
+    > p {
+      min-height: 0;
+    }
+  }
+}
+
+.manual {
+  border-top-color: #c68c4a;
+}
+
+.compiler {
+  border-top-color: #0d9f91;
+}
+
+.case-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+
+  > span {
+    color: #263c44;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  > strong {
+    color: #145f57;
+    font-size: 22px;
+    white-space: nowrap;
+
+    small {
+      color: #83949a;
+      font-size: 10px;
+      font-weight: 500;
+      margin-left: 5px;
+    }
+  }
+}
+
+.preview-row {
+  min-height: 57px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 0;
+  border-top: 1px solid #ebf0f0;
+  border-bottom: 1px solid #ebf0f0;
+  cursor: pointer;
+
+  input {
+    accent-color: #0d9f91;
+  }
+
+  > span {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    strong {
+      color: #344b52;
+      font-size: 12px;
+    }
+
+    small {
+      color: #8a9aa0;
+      font-size: 10px;
+    }
+  }
+}
+
+.parent-state {
+  margin-top: 12px;
+  color: #8a9aa0;
+  font-size: 11px;
+}

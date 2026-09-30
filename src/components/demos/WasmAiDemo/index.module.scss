@@ -1,0 +1,142 @@
+.tool {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  border: 1px solid #dce5e5;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+
+  @media (width <= 780px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.editor {
+  min-width: 0;
+  padding: 20px;
+  border-right: 1px solid #e3eaea;
+
+  @media (width <= 780px) {
+    border-right: 0;
+    border-bottom: 1px solid #e3eaea;
+  }
+}
+
+.heading {
+  margin-bottom: 18px;
+  color: #38555b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.slider {
+  display: block;
+  margin-bottom: 18px;
+
+  span {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    color: #5d747a;
+    font-size: 12px;
+  }
+
+  strong {
+    color: #203e45;
+    font-size: 12px;
+  }
+
+  input {
+    width: 100%;
+    accent-color: #188477;
+  }
+}
+
+.samples {
+  display: flex;
+  gap: 7px;
+
+  button {
+    min-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #d4e2df;
+    border-radius: 4px;
+    background: #f4f9f7;
+    color: #2b625c;
+    font-size: 11px;
+  }
+}
+
+.result {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.risk {
+  min-height: 97px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+
+  strong {
+    color: #203e45;
+    font-size: 42px;
+  }
+
+  > span:not(.empty) {
+    color: #b16650;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+.empty {
+  align-self: center;
+  color: #9aabb0;
+  font-size: 12px;
+}
+
+.meter {
+  height: 8px;
+  border-radius: 4px;
+  background: #e8eeee;
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    background: #d7885c;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 28px;
+  color: #7d9195;
+  font-size: 11px;
+
+  span {
+    overflow-wrap: anywhere;
+  }
+}
+
+.run {
+  min-height: 36px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin-top: 17px;
+  border: 1px solid #167b6e;
+  border-radius: 4px;
+  background: #197d70;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}

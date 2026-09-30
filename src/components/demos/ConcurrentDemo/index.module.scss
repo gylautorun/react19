@@ -1,0 +1,265 @@
+.surface {
+  background: #fff;
+  border: 1px solid #e4e9ec;
+  border-radius: 7px;
+  box-shadow: 0 2px 11px rgb(29 49 57 / 2.5%);
+}
+
+.demo-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  @media (width <= 440px) {
+    flex-wrap: wrap;
+
+    .search-field {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.search-field {
+  height: 39px;
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #dbe3e7;
+  border-radius: 5px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  color: #93a3aa;
+
+  &:focus-within {
+    border-color: #16aa99;
+  }
+
+  input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    color: #273943;
+    font-size: 12px;
+    background: transparent;
+
+    &::placeholder {
+      color: #a3afb6;
+    }
+  }
+}
+
+.list-heading {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid #ecf0f2;
+  font-size: 12px;
+  font-weight: 700;
+
+  span {
+    font-size: 11px;
+    color: #9da9af;
+    font-weight: 500;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: #9aa9af;
+  padding: 30px 10px;
+  font-size: 11px;
+}
+
+.concurrent-surface {
+  padding: 20px;
+
+  .list-heading {
+    padding: 0;
+    margin-top: 12px;
+  }
+}
+
+.segmented {
+  display: flex;
+  background: #eef3f4;
+  padding: 3px;
+  border-radius: 5px;
+  flex: none;
+
+  button {
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: #7f9099;
+    font-size: 11px;
+    font-weight: 700;
+    height: 31px;
+    width: 42px;
+
+    &.selected {
+      background: #fff;
+      color: #128f80;
+      box-shadow: 0 1px 4px #dbe4e4;
+    }
+  }
+
+  @media (width <= 440px) {
+    width: 100%;
+
+    button {
+      flex: 1;
+    }
+  }
+}
+
+.facet-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+
+  select {
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    border: 1px solid #dbe3e7;
+    border-radius: 5px;
+    background: white;
+    padding: 0 9px;
+    color: #415a62;
+    font-size: 11px;
+  }
+
+  label {
+    display: grid;
+    gap: 6px;
+    color: #687c84;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  @media (width <= 600px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.summary-row {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding: 16px 0 6px;
+  color: #819199;
+  font-size: 11px;
+
+  strong {
+    color: #246b61;
+    font-size: 15px;
+  }
+
+  @media (width <= 440px) {
+    gap: 8px 14px;
+  }
+}
+
+.data-list {
+  transition: opacity 0.15s;
+
+  &.stale {
+    opacity: 0.55;
+  }
+}
+
+.data-row {
+  min-height: 41px;
+  border-bottom: 1px solid #f0f3f4;
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) 70px 70px 70px;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+
+  .status-alert {
+    color: #bb554c;
+  }
+
+  strong {
+    color: #455b64;
+    font-weight: 600;
+  }
+
+  small {
+    color: #8ea0a7;
+  }
+
+  span {
+    color: #a0acb2;
+    font-family: monospace;
+  }
+
+  em {
+    color: #607d78;
+    font-size: 10px;
+    font-style: normal;
+  }
+
+  b {
+    color: #405c63;
+    font-size: 10px;
+    text-align: right;
+  }
+
+  @media (width <= 600px) {
+    grid-template-columns: 64px minmax(0, 1fr) 48px 56px;
+    gap: 5px;
+
+    strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    small {
+      display: none;
+    }
+  }
+}
+
+.list-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  color: #91a0a8;
+  font-size: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+
+  code {
+    color: #178e7f;
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 5px;
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 29px;
+    border: 1px solid #d6e3e3;
+    border-radius: 5px;
+    background: white;
+    color: #46746c;
+
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
+}
