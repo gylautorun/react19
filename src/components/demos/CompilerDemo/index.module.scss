@@ -135,16 +135,25 @@
 .price-filter {
   display: flex;
   align-items: center;
+  flex: 1;
   gap: 9px;
+  min-width: 0;
+  max-width: 600px;
+  white-space: nowrap;
 
   strong {
-    min-width: 48px;
+    min-width: 65px;
     color: #24655e;
   }
 
   input {
-    width: min(180px, 30vw);
+    flex: 1;
+    min-width: 100px;
     accent-color: #0d9f91;
+  }
+
+  @media (width <= 440px) {
+    flex-basis: 100%;
   }
 }
 

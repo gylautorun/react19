@@ -6,6 +6,8 @@ import { products, type Product } from '../../../constants/products';
 import styles from './index.module.scss';
 
 type SortMode = 'recommended' | 'price-low' | 'price-high' | 'rating';
+const priceLimit =
+  Math.ceil(Math.max(...products.map((product) => product.price)) / 500) * 500;
 
 function ProductResults({
   items,
@@ -87,7 +89,7 @@ export function CompilerDemo() {
   const [category, setCategory] = useState('全部');
   const [sort, setSort] = useState<SortMode>('recommended');
   const [stockOnly, setStockOnly] = useState(false);
-  const [maxPrice, setMaxPrice] = useState(1200);
+  const [maxPrice, setMaxPrice] = useState(priceLimit);
   const [compared, setCompared] = useState<string[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [clicks, setClicks] = useState(0);
@@ -166,8 +168,8 @@ export function CompilerDemo() {
           价格上限{' '}
           <input
             type="range"
-            min="100"
-            max="1200"
+            min="0"
+            max={priceLimit}
             step="50"
             value={maxPrice}
             onChange={(event) => setMaxPrice(Number(event.target.value))}
