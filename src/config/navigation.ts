@@ -2,6 +2,7 @@
 
 import {
   Activity,
+  Blocks,
   Braces,
   CircleGauge,
   Cpu,
@@ -29,6 +30,10 @@ export const navigationGroups = [
   {
     label: '状态管理',
     items: [{ path: '/store', title: 'Zustand 实战', icon: Database }],
+  },
+  {
+    label: '组件互操作',
+    items: [{ path: '/web-components', title: 'Web Components', icon: Blocks }],
   },
   {
     label: 'WebAssembly',

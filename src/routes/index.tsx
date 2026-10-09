@@ -6,6 +6,7 @@ import { HooksPage } from '../pages/HooksPage';
 import { OverviewPage } from '../pages/OverviewPage';
 import { RscPage } from '../pages/RscPage';
 import { StorePage } from '../pages/StorePage';
+import { WebComponentsPage } from '../pages/WebComponentsPage';
 import { WasmAiPage } from '../pages/WasmAiPage';
 import { WasmAudioPage } from '../pages/WasmAudioPage';
 import { WasmFractalPage } from '../pages/WasmFractalPage';
@@ -29,6 +30,10 @@ const routes: Record<string, RouteDefinition> = {
   '/hooks': { title: '异步 Hooks', render: () => <HooksPage /> },
   '/concurrent': { title: '并发渲染', render: () => <ConcurrentPage /> },
   '/store': { title: 'Zustand 状态管理', render: () => <StorePage /> },
+  '/web-components': {
+    title: 'Web Components',
+    render: () => <WebComponentsPage />,
+  },
   '/wasm/image': { title: 'WASM 图片处理', render: () => <WasmImagePage /> },
   '/wasm/audio': { title: 'WASM 音频编解码', render: () => <WasmAudioPage /> },
   '/wasm/ai': { title: 'WASM AI 推理', render: () => <WasmAiPage /> },

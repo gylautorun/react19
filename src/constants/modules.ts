@@ -49,6 +49,14 @@ export const modules = [
   },
   {
     num: '07',
+    path: '/web-components',
+    title: 'Web Components',
+    tag: '组件互操作',
+    detail: 'Lit 组件、属性、事件与样式契约。',
+    tone: 'blue',
+  },
+  {
+    num: '08',
     path: '/wasm/image',
     title: 'WASM 图片处理',
     tag: '像素运算',
@@ -56,7 +64,7 @@ export const modules = [
     tone: 'mint',
   },
   {
-    num: '08',
+    num: '09',
     path: '/wasm/audio',
     title: 'WASM 音频编解码',
     tag: 'μ-law',
@@ -64,7 +72,7 @@ export const modules = [
     tone: 'orange',
   },
   {
-    num: '09',
+    num: '10',
     path: '/wasm/ai',
     title: 'WASM 本地 AI',
     tag: '模型推理',
@@ -72,7 +80,7 @@ export const modules = [
     tone: 'blue',
   },
   {
-    num: '10',
+    num: '11',
     path: '/wasm/fractal',
     title: 'WASM 计算可视化',
     tag: 'Worker + Canvas',
@@ -80,7 +88,7 @@ export const modules = [
     tone: 'violet',
   },
   {
-    num: '11',
+    num: '12',
     path: '/wasm/runtime',
     title: 'WASM GC 与 WASI',
     tag: '运行时',

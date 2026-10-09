@@ -15,8 +15,8 @@ export function OverviewPage() {
             <span>React 19</span>
           </h1>
           <p>
-            十一个独立实验，覆盖 React 19 核心能力，以及 WebAssembly
-            的图片、音频、AI、可视化和运行时边界。
+            十二个独立实验，覆盖 React 19 核心能力、Web Components 互操作，以及
+            WebAssembly 的图片、音频、AI、可视化和运行时边界。
           </p>
           <a className={styles['primary-button']} href="/compiler">
             开始第一个实验 <span aria-hidden="true">→</span>
@@ -36,7 +36,7 @@ export function OverviewPage() {
       </div>
       <div className={styles['overview-meta']}>
         <span>
-          <strong>11</strong> 个交互实验
+          <strong>12</strong> 个交互实验
         </span>
         <span>
           <strong>19.3</strong> React 版本
