@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation API 实验</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 18px;
+        color: #263b43;
+        background: #fff;
+        font:
+          12px/1.5 system-ui,
+          sans-serif;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 14px;
+      }
+      nav,
+      .actions {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      button {
+        min-height: 34px;
+        border: 1px solid #cfdbde;
+        border-radius: 4px;
+        background: #fff;
+        padding: 0 11px;
+        color: #34525b;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      button[aria-current='step'] {
+        border-color: #0d8d7f;
+        background: #e7f4f0;
+        color: #086e62;
+        font-weight: 700;
+      }
+      .view {
+        min-height: 126px;
+        margin: 13px 0;
+        border-top: 1px solid #e4ebed;
+        border-bottom: 1px solid #e4ebed;
+        padding: 15px 0;
+      }
+      .view strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 16px;
+      }
+      .view p,
+      .status {
+        margin: 0;
+        color: #6d8188;
+      }
+      .status {
+        margin-top: 10px;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>隔离导航工作区</h1>
+    <nav aria-label="实验视图">
+      <button data-step="overview">概览</button>
+      <button data-step="details">详情</button>
+      <button data-step="review">复核</button>
+    </nav>
+    <div class="view" aria-live="polite">
+      <strong id="view-title"></strong>
+      <p id="view-copy"></p>
+    </div>
+    <div class="actions">
+      <button id="back" type="button">后退</button>
+      <button id="forward" type="button">前进</button>
+      <button id="fail-next" type="button">下一次失败</button>
+      <button id="retry" type="button" disabled>重试</button>
+    </div>
+    <p class="status" id="status"></p>
+    <script>
+      const steps = {
+        overview: ['概览', '当前实验的起点。'],
+        details: ['详情', '模拟异步数据提交后的第二个视图。'],
+        review: ['复核', '历史遍历会恢复这个视图。'],
+      };
+      const navigationApi = window.navigation;
+      let failNext = false;
+      let retryUrl = null;
+      function currentStep() {
+        const step = new URL(location.href).searchParams.get('step');
+        return steps[step] ? step : 'overview';
+      }
+      function report(phase) {
+        parent.postMessage(
+          {
+            source: 'navigation-lab',
+            phase,
+            step: currentStep(),
+            entry: navigationApi?.currentEntry?.index ?? history.length - 1,
+            supported: Boolean(navigationApi?.addEventListener),
+          },
+          location.origin,
+        );
+      }
+      function render() {
+        const step = currentStep();
+        document.getElementById('view-title').textContent = steps[step][0];
+        document.getElementById('view-copy').textContent = steps[step][1];
+        document.querySelectorAll('[data-step]').forEach((button) => {
+          if (button.dataset.step === step)
+            button.setAttribute('aria-current', 'step');
+          else button.removeAttribute('aria-current');
+        });
+        document.getElementById('status').textContent =
+          `${navigationApi ? 'Navigation API' : 'History API'} · ${location.search || '初始视图'}`;
+      }
+      function navigateTo(url) {
+        if (navigationApi?.navigate)
+          navigationApi.navigate(url).finished.catch(() => {});
+        else if (failNext) {
+          failNext = false;
+          retryUrl = url;
+          document.getElementById('retry').disabled = false;
+          document.getElementById('status').textContent =
+            '模拟导航失败，可重试';
+          report('navigateerror');
+        } else {
+          history.pushState(null, '', url);
+          render();
+          report('pushState');
+        }
+      }
+      if (navigationApi?.addEventListener) {
+        navigationApi.addEventListener('navigate', (event) => {
+          const destination = new URL(event.destination.url);
+          if (
+            !event.canIntercept ||
+            destination.origin !== location.origin ||
+            destination.pathname !== location.pathname
+          )
+            return;
+          report('navigate');
+          event.intercept({
+            handler: async () => {
+              await new Promise((resolve) => setTimeout(resolve, 180));
+              if (event.signal.aborted) return;
+              if (failNext) {
+                failNext = false;
+                retryUrl = event.destination.url;
+                document.getElementById('retry').disabled = false;
+                document.getElementById('status').textContent =
+                  '模拟导航失败，可重试';
+                throw new Error('模拟导航失败');
+              }
+              render();
+              report('handler 完成');
+            },
+          });
+        });
+        navigationApi.addEventListener('navigatesuccess', () =>
+          report('navigatesuccess'),
+        );
+        navigationApi.addEventListener('navigateerror', () =>
+          report('navigateerror'),
+        );
+      } else {
+        window.addEventListener('popstate', () => {
+          render();
+          report('popstate');
+        });
+      }
+      document.querySelectorAll('[data-step]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const url = `?step=${button.dataset.step}`;
+          navigateTo(url);
+        });
+      });
+      document
+        .getElementById('back')
+        .addEventListener('click', () => history.back());
+      document
+        .getElementById('forward')
+        .addEventListener('click', () => history.forward());
+      document.getElementById('fail-next').addEventListener('click', () => {
+        failNext = true;
+        document.getElementById('status').textContent = '下一次导航将模拟失败';
+      });
+      document.getElementById('retry').addEventListener('click', () => {
+        if (!retryUrl) return;
+        const url = retryUrl;
+        retryUrl = null;
+        document.getElementById('retry').disabled = true;
+        navigateTo(url);
+      });
+      render();
+      report('ready');
+    </script>
+  </body>
+</html>

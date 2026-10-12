@@ -44,6 +44,7 @@ pnpm preview
 | `/concurrent` | useDeferredValue、useTransition、多维筛选、统计与分页 |
 | `/store` | Zustand 共享状态与学习清单 |
 | `/web-components` | Lit Canvas 趋势图与状态卡，验证 React 属性、事件、插槽和样式互操作 |
+| `/web-platform` | INP 与交互负载、Speculation Rules、Navigation API、Popover/Dialog、Storage Buckets、WebGPU |
 | `/wasm/image` | WASM 像素滤镜、图片上传与 PNG 导出 |
 | `/wasm/audio` | WASM μ-law 音频编解码、波形与播放 |
 | `/wasm/ai` | TensorFlow.js + WASM 后端在浏览器做设备异常分类 |
@@ -74,6 +75,8 @@ pnpm preview
 | `lib/` | WASM 加载和线性内存调用封装 |
 
 Web Components 组件的开发过程、API 和接入示例见 [Web Components 组件开发与使用](docs/web-components.md)。
+
+浏览器能力实验的实现与兼容性边界见 [浏览器能力实验室](docs/web-platform.md)。
 
 此项目使用 Vite RSC starter 的底层运行时，适合学习各机制；生产应用应结合具体全栈框架补齐数据库、鉴权、缓存与部署。示例中的便签、工单和投票只存于服务端进程内存，重启会重置；工单附件只读取名称、大小和摘要，不保存文件。Zustand 清单只存于当前浏览器会话的运行内存，刷新页面会重置。
 

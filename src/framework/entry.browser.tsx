@@ -114,6 +114,7 @@ function listenNavigation(onNavigation: () => void) {
       (!link.target || link.target === '_self') &&
       link.origin === location.origin &&
       !link.hasAttribute('download') &&
+      !link.hasAttribute('data-native-navigation') &&
       e.button === 0 && // left clicks only
       !e.metaKey && // open in new tab (mac)
       !e.ctrlKey && // open in new tab (windows)

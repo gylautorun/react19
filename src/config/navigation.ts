@@ -7,6 +7,7 @@ import {
   CircleGauge,
   Cpu,
   Database,
+  Globe2,
   Image,
   Music2,
   Server,
@@ -34,6 +35,10 @@ export const navigationGroups = [
   {
     label: '组件互操作',
     items: [{ path: '/web-components', title: 'Web Components', icon: Blocks }],
+  },
+  {
+    label: '浏览器平台',
+    items: [{ path: '/web-platform', title: '浏览器能力', icon: Globe2 }],
   },
   {
     label: 'WebAssembly',

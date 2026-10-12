@@ -95,4 +95,12 @@ export const modules = [
     detail: '能力检测与组件模型边界。',
     tone: 'pink',
   },
+  {
+    num: '13',
+    path: '/web-platform',
+    title: '浏览器能力实验室',
+    tag: 'Web Platform',
+    detail: 'INP、预加载、导航、存储与 GPU 计算。',
+    tone: 'mint',
+  },
 ];

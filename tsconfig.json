@@ -14,7 +14,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["ESNext", "DOM"],
-    "types": ["vite/client", "@vitejs/plugin-rsc/types"],
+    "types": ["vite/client", "@vitejs/plugin-rsc/types", "@webgpu/types"],
     "jsx": "react-jsx"
   },
   "exclude": ["src/wasm"]

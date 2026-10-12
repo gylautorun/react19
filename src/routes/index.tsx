@@ -7,6 +7,7 @@ import { OverviewPage } from '../pages/OverviewPage';
 import { RscPage } from '../pages/RscPage';
 import { StorePage } from '../pages/StorePage';
 import { WebComponentsPage } from '../pages/WebComponentsPage';
+import { WebPlatformPage } from '../pages/WebPlatformPage';
 import { WasmAiPage } from '../pages/WasmAiPage';
 import { WasmAudioPage } from '../pages/WasmAudioPage';
 import { WasmFractalPage } from '../pages/WasmFractalPage';
@@ -33,6 +34,10 @@ const routes: Record<string, RouteDefinition> = {
   '/web-components': {
     title: 'Web Components',
     render: () => <WebComponentsPage />,
+  },
+  '/web-platform': {
+    title: '浏览器能力',
+    render: () => <WebPlatformPage />,
   },
   '/wasm/image': { title: 'WASM 图片处理', render: () => <WasmImagePage /> },
   '/wasm/audio': { title: 'WASM 音频编解码', render: () => <WasmAudioPage /> },
