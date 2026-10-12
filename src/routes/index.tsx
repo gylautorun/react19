@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { ActionPage } from '../pages/ActionPage';
 import { CompilerPage } from '../pages/CompilerPage';
 import { ConcurrentPage } from '../pages/ConcurrentPage';
+import { DocxPage } from '../pages/DocxPage';
 import { HooksPage } from '../pages/HooksPage';
 import { OverviewPage } from '../pages/OverviewPage';
 import { RscPage } from '../pages/RscPage';
@@ -39,6 +40,7 @@ const routes: Record<string, RouteDefinition> = {
     title: '浏览器能力',
     render: () => <WebPlatformPage />,
   },
+  '/docx': { title: 'Word 文档', render: () => <DocxPage /> },
   '/wasm/image': { title: 'WASM 图片处理', render: () => <WasmImagePage /> },
   '/wasm/audio': { title: 'WASM 音频编解码', render: () => <WasmAudioPage /> },
   '/wasm/ai': { title: 'WASM AI 推理', render: () => <WasmAiPage /> },

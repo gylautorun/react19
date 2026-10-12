@@ -7,6 +7,7 @@ import {
   CircleGauge,
   Cpu,
   Database,
+  FileText,
   Globe2,
   Image,
   Music2,
@@ -39,6 +40,10 @@ export const navigationGroups = [
   {
     label: '浏览器平台',
     items: [{ path: '/web-platform', title: '浏览器能力', icon: Globe2 }],
+  },
+  {
+    label: '文档生成',
+    items: [{ path: '/docx', title: 'Word 文档', icon: FileText }],
   },
   {
     label: 'WebAssembly',

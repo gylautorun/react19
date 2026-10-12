@@ -103,4 +103,12 @@ export const modules = [
     detail: 'INP、预加载、导航、存储与 GPU 计算。',
     tone: 'mint',
   },
+  {
+    num: '14',
+    path: '/docx',
+    title: 'Word 文档工作台',
+    tag: 'DOCX 9.9.0',
+    detail: '报告排版、原生图表、形状、水印与导出。',
+    tone: 'blue',
+  },
 ];

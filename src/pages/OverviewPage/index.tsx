@@ -15,8 +15,8 @@ export function OverviewPage() {
             <span>React 19</span>
           </h1>
           <p>
-            十三个独立实验，覆盖 React 19 核心能力、Web Components、浏览器平台，
-            以及 WebAssembly 的图片、音频、AI、可视化和运行时边界。
+            十四个独立实验，覆盖 React 19 核心能力、Web Components、浏览器平台、
+            Word 文档生成，以及 WebAssembly 图片、音频、AI、可视化和运行时实验。
           </p>
           <a className={styles['primary-button']} href="/compiler">
             开始第一个实验 <span aria-hidden="true">→</span>

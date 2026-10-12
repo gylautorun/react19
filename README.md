@@ -1,6 +1,6 @@
 # React 19 实验台
 
-Vite 8 + React 19 + TypeScript 6 + Zustand 5 的交互式学习项目。使用 `@vitejs/plugin-rsc` 提供真实的 Server Components、Server Functions 和流式 SSR；React Compiler 通过 Vite 8 的 Babel preset 启用。Web Components 实验使用 Lit 3 和 `@lit/react`。
+Vite 8 + React 19 + TypeScript 6 + Zustand 5 的交互式学习项目。使用 `@vitejs/plugin-rsc` 提供真实的 Server Components、Server Functions 和流式 SSR；React Compiler 通过 Vite 8 的 Babel preset 启用。Web Components 实验使用 Lit 3 和 `@lit/react`；文档工作台使用固定版本的 DOCX 9.9.0。
 
 WebAssembly 模块由 AssemblyScript 编译。`pnpm dev` 与 `pnpm build` 会先生成 `public/wasm/lab.wasm`；手动重编译可运行 `pnpm build:wasm`。
 
@@ -45,6 +45,7 @@ pnpm preview
 | `/store` | Zustand 共享状态与学习清单 |
 | `/web-components` | Lit Canvas 趋势图与状态卡，验证 React 属性、事件、插槽和样式互操作 |
 | `/web-platform` | INP 与交互负载、Speculation Rules、Navigation API、Popover/Dialog、Storage Buckets、WebGPU |
+| `/docx` | 在线编辑报告模板，调整图表、形状、水印与布局并导出 Word 文件 |
 | `/wasm/image` | WASM 像素滤镜、图片上传与 PNG 导出 |
 | `/wasm/audio` | WASM μ-law 音频编解码、波形与播放 |
 | `/wasm/ai` | TensorFlow.js + WASM 后端在浏览器做设备异常分类 |
@@ -77,6 +78,8 @@ pnpm preview
 Web Components 组件的开发过程、API 和接入示例见 [Web Components 组件开发与使用](docs/web-components.md)。
 
 浏览器能力实验的实现与兼容性边界见 [浏览器能力实验室](docs/web-platform.md)。
+
+Word 报告生成、布局估算和预览边界见 [DOCX 9.9 报告工作台](docs/docx.md)。
 
 此项目使用 Vite RSC starter 的底层运行时，适合学习各机制；生产应用应结合具体全栈框架补齐数据库、鉴权、缓存与部署。示例中的便签、工单和投票只存于服务端进程内存，重启会重置；工单附件只读取名称、大小和摘要，不保存文件。Zustand 清单只存于当前浏览器会话的运行内存，刷新页面会重置。
 

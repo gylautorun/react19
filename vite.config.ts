@@ -6,6 +6,13 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
+    include: [
+      'docx',
+      'docx/charts',
+      'docx/shapes',
+      'docx/watermarks',
+      'docx/layout',
+    ],
   },
   plugins: [
     rsc({
